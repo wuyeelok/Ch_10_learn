@@ -25,8 +25,14 @@ public class TryOpt {
         Optional<Double> opDouble = average(4, 5, 8);
         opDouble.ifPresent(printVal);
 
+        System.out.println(opDouble.orElse(Double.NaN));
+        System.out.println(opDouble.orElseGet(Math::random));
+
         Optional<Double> empty = average();
         empty.ifPresent(printVal);
+
+        System.out.println(empty.orElse(Double.NaN));
+        System.out.println(empty.orElseGet(Math::random));
 
 
     }
