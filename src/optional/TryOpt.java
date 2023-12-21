@@ -1,8 +1,6 @@
 package optional;
 
 import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
 import java.util.function.Consumer;
 
 public class TryOpt {
@@ -22,16 +20,13 @@ public class TryOpt {
 
     public static void main(String[] args) {
 
-        Optional<Double> opDouble = average(4, 5, 8);
-        opDouble.ifPresent(value -> {
+        Consumer<Double> printVal = value -> System.out.println("Average Value is " + value);
 
-            System.out.println("Average Value is " + value);
-        });
+        Optional<Double> opDouble = average(4, 5, 8);
+        opDouble.ifPresent(printVal);
 
         Optional<Double> empty = average();
-        empty.ifPresent(value -> {
-            System.out.println("Average Value is " + value);
-        });
+        empty.ifPresent(printVal);
 
 
     }
