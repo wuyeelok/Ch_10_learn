@@ -4,6 +4,9 @@ import utilities.CollectionUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.DoubleStream;
+
 
 public class PrimitiveStream {
 
@@ -18,6 +21,15 @@ public class PrimitiveStream {
 
         // Null list
         System.out.println(findAvg(null));
+
+        var ran = DoubleStream.generate(Math::random);
+        ran.limit(6).forEach(System.out::println);
+
+        System.out.println("_____________________________");
+
+        Random random = new Random();
+        var oneDiceValStream = random.ints(8).map(i -> Math.abs(i % 6) + 1);
+        oneDiceValStream.forEach(v -> System.out.println("Dice value: " + v));
     }
 
     private static double findAvg(List<Integer> myList) {
